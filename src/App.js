@@ -11,6 +11,12 @@ const app = express();
 app.use(express.json());
 
 connectDB();
+app.get('/', (req, res) => {
+    res.json({
+        message: "API is working perfectly!",
+        status: "success"
+    })
+})
 
 app.use("/api/", authRouter);
 app.use("/api/users", userRouter);
