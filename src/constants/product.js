@@ -17,5 +17,6 @@ export const PRODUCT_BRANDS = [
   "Dell",
   "Logitech",
   "Vivo",
-  "Xiaomi"
+  "Xiaomi",
+  "Realme"
 ];
