@@ -6,9 +6,20 @@ import productRouter from "./routes/product.route.js";
 import mongoose from "mongoose";
 import connectDB from "./config/database.js";
 import config from "./config/config.js";
+import cors from 'cor'
 
 const app = express();
 app.use(express.json());
+
+const corsOptions = {
+    origin: ['http://localhost:5173'], // Allowed domains
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],                    // Allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'],            // Allowed custom headers
+    credentials: true,                                             // Allow cookies/auth headers
+    optionsSuccessStatus: 200                                      // Legacy browser support
+};
+
+app.use(cors())
 
 connectDB();
 app.get('/', (req, res) => {
