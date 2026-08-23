@@ -19,7 +19,7 @@ const corsOptions = {
     optionsSuccessStatus: 200                                      // Legacy browser support
 };
 
-app.use(cors())
+app.use(cors(corsOptions))
 
 connectDB();
 app.get('/', (req, res) => {
