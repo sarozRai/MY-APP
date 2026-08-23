@@ -6,7 +6,7 @@ import productRouter from "./routes/product.route.js";
 import mongoose from "mongoose";
 import connectDB from "./config/database.js";
 import config from "./config/config.js";
-import cors from 'cor'
+import cors from 'cors'
 
 const app = express();
 app.use(express.json());
