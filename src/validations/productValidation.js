@@ -6,12 +6,12 @@ const productSchema = z.object({
     required_error: "Product name is required",
     invalid_type_error: "name should be string",
   }),
-  category: z.enum(PRODUCT_CATEGORIES, {
+  category: z.string({
     required_error: "Product category is required",
     invalid_type_error:
       "Please select one of the category from the category list!",
   }),
-  brand: z.enum(PRODUCT_BRANDS, {
+  brand: z.string({
     required_error: "Brand is required",
     invalid_type_error: "Brand doesn't match fromt the list of brands!",
   }),
