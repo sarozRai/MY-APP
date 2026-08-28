@@ -10,21 +10,11 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, "Please enter the product category"],
-      enum: [
-        "Smartphones",
-        "Laptops",
-        "Audio",
-        "Wearables",
-        "Accessories",
-        "Gaming",
-        "Tablets",
-        "Cameras",
-      ],
     },
     brand: {
       type: String,
       required: [true, "Please enter the product brand"],
-      enum: ["Apple", "Samsung", "OnePlus", "Sony", "Dell", "Logitech", "Vivo", "Xiaomi", "Realme"],
+
     },
     price: {
       type: Number,
