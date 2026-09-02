@@ -8,7 +8,7 @@ const getAllProducts = async (query) => {
 
     const filters = {};
     if (category) filters.category = category;
-    if (brand) filters.brands = { $in: brand.split(",") };
+    if (brand) filters.brand = { $in: brand.split(",") };
     if (name) filters.name = { $regex: name, $options: "i" };
 
     if (min) filters.price = { $gte: min };
