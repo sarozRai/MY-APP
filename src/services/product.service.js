@@ -4,11 +4,11 @@ import { uploadFile } from "../utils/cloudinaryUploader.js";
 const getAllProducts = async (query) => {
 
   try {
-    const { brand, category, name, min, max, skip, limit } = query;
+    const { brands, category, name, min, max, skip, limit } = query;
 
     const filters = {};
     if (category) filters.category = category;
-    if (brand) filters.brand = { $in: brand.split(",") };
+    if (brands) filters.brands = { $in: brands.split(",") };
     if (name) filters.name = { $regex: name, $options: "i" };
 
     if (min) filters.price = { $gte: min };
