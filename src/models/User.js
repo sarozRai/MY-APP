@@ -26,6 +26,19 @@ const userShcema = mongoose.Schema({
         enum: ['USER', 'MERCHANT', 'ADMIN'],
         default: ["USER"]
     },
+    address: {
+        city: {
+            type: String,
+            required: true,
+        },
+        street: {
+            type: String
+        },
+        province: {
+            type: String,
+            required: true
+        }
+    },
     profileImage: {
         type: String,
     },
