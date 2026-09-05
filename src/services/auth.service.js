@@ -24,6 +24,7 @@ const register = async (user) => {
     phone: user.phone,
     password: hashedPassword,
     role: user.role,
+    address: user.address
   });
 };
 
