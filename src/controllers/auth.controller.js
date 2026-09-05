@@ -19,7 +19,7 @@ const login = async (req, res) => {
     const token = generateJWT(loggedUser);
 
     res.cookie("authToken", token, { maxAge: 1000 * 60 * 60 * 24 });
-    return res.send(loggedUser);
+    return res.send({ ...loggedUser, token });
   } catch (error) {
     return res.status(error?.status || 400).send(error.message);
   }
