@@ -5,7 +5,13 @@ const register = async (req, res) => {
 
   try {
     const newUser = await authService.register(req.body);
-    return res.status(201).send(newUser);
+
+
+    const token = generateJWT(loggedUser);
+
+    res.cookie("authToken", token, { maxAge: 1000 * 60 * 60 * 24 });
+
+    return res.status(201).send({ ...newUser, token });
   } catch (error) {
     return res.status(error?.status || 400).send(error.message);
   }
