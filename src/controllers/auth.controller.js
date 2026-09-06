@@ -6,7 +6,6 @@ const register = async (req, res) => {
   try {
     const newUser = await authService.register(req.body);
 
-
     const token = generateJWT(newUser);
 
     res.cookie("authToken", token, { maxAge: 1000 * 60 * 60 * 24 });

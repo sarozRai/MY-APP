@@ -18,7 +18,7 @@ const register = async (user) => {
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(user.password, salt);
 
-  return await User.create({
+  const createdUser = await User.create({
     name: user.name,
     email: user.email,
     phone: user.phone,
@@ -26,6 +26,18 @@ const register = async (user) => {
     role: user.role,
     address: user.address
   });
+
+
+  return {
+    _id: createdUser._id,
+    name: createdUser.name,
+    email: createdUser.email,
+    phone: createdUser.phone,
+    role: createdUser.role,
+    address: createdUser.address
+  }
+
+
 };
 
 const login = async (user) => {
