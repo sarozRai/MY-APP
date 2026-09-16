@@ -15,7 +15,7 @@ router.post(
   "/products",
   auth,
   roleBasedAuth(ROLE_MERCHANT),
-  upload.single("image"),
+  upload.array("images", 5),
   validate(productSchema),
   productController.createProduct,
 );

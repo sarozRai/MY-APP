@@ -24,7 +24,7 @@ const createProduct = async (req, res) => {
   try {
     const newProduct = await productService.createProduct(
       req.body,
-      req.file,
+      req.files,
       req.user._id,
     );
     res.send(newProduct);

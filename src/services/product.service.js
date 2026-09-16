@@ -37,19 +37,24 @@ const getProductById = async (id) => {
   return product;
 };
 
-const createProduct = async (data, file, userId) => {
+const createProduct = async (data, files, userId) => {
   try {
-    if (!file)
+    if (!files)
       throw {
         status: 400,
         message: "Produdct Image is required",
       };
 
-    const cloudinaryResult = await uploadFile(file.buffer);
+
+    const uploadPromises = files.map((file) => uploadFile(file.buffer));
+    const cloudinaryResults = await Promise.all(uploadPromises);
+
+
+    const imageUrls = cloudinaryResults.map((result) => result.secure_url)
 
     return await Product.create({
       ...data,
-      imageUrl: cloudinaryResult.secure_url,
+      imageUrl: imageUrls,
       createdBy: userId,
     });
   } catch (error) {
