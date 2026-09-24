@@ -14,7 +14,7 @@ const getAllProducts = async (query) => {
     if (min) filters.price = { $gte: min };
     if (max) filters.price = { ...filters.price, $lte: max };
 
-    const sort = query.sort ? JSON.parse(query.sort) : JSON.parse({ createdAt: -1 });
+    const sort = query.sort ? JSON.parse(query.sort) : { createdAt: -1 };
 
     return await Product.find(filters)
       .sort(sort)
