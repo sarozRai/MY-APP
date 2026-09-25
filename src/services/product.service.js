@@ -39,7 +39,7 @@ const getProductById = async (id) => {
 
 const createProduct = async (data, files, userId) => {
   try {
-    if (!files)
+    if (!files || files.length === 0)
       throw {
         status: 400,
         message: "Produdct Image is required",
@@ -62,9 +62,26 @@ const createProduct = async (data, files, userId) => {
   }
 };
 
-const updateProduct = async (id, updateData) => {
+const updateProduct = async (id, data, files) => {
+
+  const updateData = data;
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(id, updateData, {
+    if (files && files.length > 0) {
+
+      const uploadPromises = files.map((file) => uploadFile(file.buffer));
+      const cloudinaryResults = await Promise.all(uploadPromises);
+
+
+      const imageUrls = cloudinaryResults.map((result) => result.secure_url)
+
+      updateData.imageUrl = imageUrls;
+    } else {
+      // Yadi user le naya image select gareko xaina bhane, 
+      // 'imageUrl' key lai delete gardine jasle garda Database ko old images as-it-is rahanchha.
+      delete updateData.imageUrl;
+    }
+
+    const updatedProduct = await Product.findByIdAndUpdate(id, { $set: updateData }, {
       new: true,
       runValidators: true,
     });
