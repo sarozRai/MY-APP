@@ -64,7 +64,7 @@ const createProduct = async (data, files, userId) => {
 
 const updateProduct = async (id, data, files) => {
 
-  const updateData = data;
+  const updateData = { ...data };
   try {
     if (files && files.length > 0) {
 
