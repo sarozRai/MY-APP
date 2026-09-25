@@ -36,10 +36,12 @@ const createProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const productId = req.params.id;
   const newData = req.body;
+  const files = req.files;
   try {
     const updatedProduct = await productService.updateProduct(
       productId,
       newData,
+      files
     );
     return res.json(updatedProduct);
   } catch (error) {
