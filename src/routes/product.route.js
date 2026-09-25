@@ -24,6 +24,7 @@ router.put(
   "/products/:id",
   auth,
   roleBasedAuth(ROLE_MERCHANT),
+  upload.array("images", 5),
   productController.updateProduct,
 );
 
