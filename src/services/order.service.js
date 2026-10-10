@@ -40,7 +40,7 @@ const getOrderById = async (id) => {
   if (!order)
     throw {
       status: 404,
-      message: "Order not found",
+      message: "Order not found!",
     };
 
   return order;
