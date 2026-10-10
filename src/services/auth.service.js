@@ -66,6 +66,7 @@ const login = async (user) => {
     name: isUserExist.name,
     email: isUserExist.email,
     role: isUserExist.role,
+    address: isUserExist.address
   };
 };
 
