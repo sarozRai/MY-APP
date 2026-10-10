@@ -72,7 +72,7 @@ const deleteOrder = async (id) => {
   return deletedOrder;
 };
 
-const createOrder = async (data, file, userId) => {
+const createOrder = async (data, userId) => {
   const orderNumber = crypto.randomUUID();
 
   return await Order.create({
