@@ -23,7 +23,7 @@ const getOrderByUser = async (userId) => {
     .populate("user", "name email")
     .populate(
       "orderItems.product",
-      "name category brand price description images quantity",
+      "name category brand price description imageUrl quantity",
     );
 
   return order;
